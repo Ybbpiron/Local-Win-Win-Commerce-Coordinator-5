@@ -1,0 +1,1142 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>휴먼 터치 커머스 - 전화 한 통으로 당신의 가게 문이 활짝 열립니다</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-orange: #FF9933;
+            --secondary-navy: #1A237E;
+            --white: #FFFFFF;
+            --light-gray: #F8F9FA;
+            --text-dark: #2C3E50;
+            --text-light: #5A6C7D;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: var(--white);
+            color: var(--text-dark);
+            line-height: 1.7;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            padding: 15px 0;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        nav li {
+            margin: 5px 15px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            font-size: 15px;
+            transition: color 0.3s;
+            padding: 5px 10px;
+        }
+
+        nav a:hover {
+            color: var(--primary-orange);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            padding: 100px 0;
+            text-align: center;
+            background: linear-gradient(135deg, #fff5eb 0%, #ffffff 100%);
+        }
+
+        .hero h1 {
+            font-size: 2.8em;
+            font-weight: 900;
+            color: var(--secondary-navy);
+            margin-bottom: 30px;
+            line-height: 1.4;
+        }
+
+        .hero h1 .highlight {
+            color: var(--primary-orange);
+            border-bottom: 4px solid var(--primary-orange);
+            padding-bottom: 5px;
+        }
+
+        .hero .subtitle {
+            font-size: 1.3em;
+            color: var(--text-light);
+            margin-bottom: 50px;
+            line-height: 1.6;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--primary-orange);
+            color: white;
+            padding: 20px 50px;
+            font-size: 1.2em;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(255, 153, 51, 0.3);
+        }
+
+        .cta-button:hover {
+            background: #ff8800;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 153, 51, 0.4);
+        }
+
+        .cta-button.secondary {
+            background: white;
+            color: var(--primary-orange);
+            border: 2px solid var(--primary-orange);
+            box-shadow: none;
+            margin-left: 15px;
+        }
+
+        .cta-button.secondary:hover {
+            background: var(--light-gray);
+        }
+
+        /* Section Styling */
+        section {
+            padding: 100px 0;
+        }
+
+        section:nth-child(even) {
+            background-color: var(--light-gray);
+        }
+
+        .section-title {
+            font-size: 2.5em;
+            font-weight: 900;
+            color: var(--secondary-navy);
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .section-subtitle {
+            font-size: 1.2em;
+            color: var(--text-light);
+            text-align: center;
+            margin-bottom: 60px;
+            line-height: 1.7;
+        }
+
+        /* Problem Section */
+        .problem-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .problem-item {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s;
+        }
+
+        .problem-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .problem-item .icon {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+
+        .problem-item h3 {
+            font-size: 1.4em;
+            color: var(--secondary-navy);
+            margin-bottom: 15px;
+        }
+
+        .problem-item p {
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        .blockquote {
+            background: linear-gradient(135deg, #1A237E 0%, #3949AB 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 15px;
+            font-size: 1.3em;
+            font-weight: 500;
+            text-align: center;
+            margin-top: 50px;
+            line-height: 1.7;
+        }
+
+        /* Solution Section */
+        .solution-content {
+            background: white;
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.1);
+            margin-top: 50px;
+        }
+
+        .solution-list {
+            margin-top: 40px;
+        }
+
+        .solution-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 30px;
+            padding: 25px;
+            background: var(--light-gray);
+            border-radius: 12px;
+            border-left: 5px solid var(--primary-orange);
+        }
+
+        .solution-item .icon {
+            font-size: 2.5em;
+            margin-right: 20px;
+            color: var(--primary-orange);
+        }
+
+        .solution-item h3 {
+            font-size: 1.3em;
+            color: var(--secondary-navy);
+            margin-bottom: 10px;
+        }
+
+        .solution-item p {
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        /* Benefits Section */
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .benefit-card {
+            background: white;
+            padding: 50px 35px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 35px rgba(255, 153, 51, 0.2);
+        }
+
+        .benefit-card .number {
+            font-size: 4em;
+            font-weight: 900;
+            color: var(--primary-orange);
+            opacity: 0.2;
+            margin-bottom: -20px;
+        }
+
+        .benefit-card .icon {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+
+        .benefit-card h3 {
+            font-size: 1.4em;
+            color: var(--secondary-navy);
+            margin-bottom: 15px;
+        }
+
+        .benefit-card p {
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        /* Trust Section */
+        .trust-content {
+            margin-top: 50px;
+        }
+
+        .trust-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .trust-card {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .trust-card .badge {
+            display: inline-block;
+            background: var(--primary-orange);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .trust-card h3 {
+            font-size: 1.3em;
+            color: var(--secondary-navy);
+            margin-bottom: 15px;
+        }
+
+        .trust-card p {
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        /* Pricing Section */
+        .pricing-table {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.1);
+            margin-top: 50px;
+        }
+
+        .pricing-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .pricing-table th,
+        .pricing-table td {
+            padding: 25px 30px;
+            text-align: left;
+            border-bottom: 1px solid var(--light-gray);
+        }
+
+        .pricing-table th {
+            background: var(--secondary-navy);
+            color: white;
+            font-weight: 700;
+            font-size: 1.1em;
+        }
+
+        .pricing-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .pricing-table .highlight-col {
+            background: #fff5eb;
+            font-weight: 700;
+            color: var(--primary-orange);
+        }
+
+        .pricing-alert {
+            background: linear-gradient(135deg, #FF9933 0%, #ff8800 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            margin-top: 40px;
+            font-size: 1.2em;
+            font-weight: 700;
+        }
+
+        /* Closing Section */
+        .closing {
+            text-align: center;
+            background: linear-gradient(135deg, #1A237E 0%, #3949AB 100%);
+            color: white;
+            padding: 100px 0;
+        }
+
+        .closing h2 {
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            color: white;
+        }
+
+        .closing p {
+            font-size: 1.3em;
+            margin-bottom: 50px;
+            line-height: 1.7;
+            opacity: 0.95;
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a1a;
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+            font-size: 0.9em;
+        }
+
+        footer a {
+            color: var(--primary-orange);
+            text-decoration: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2em;
+            }
+
+            .hero .subtitle {
+                font-size: 1.1em;
+            }
+
+            nav ul {
+                font-size: 0.9em;
+            }
+
+            nav li {
+                margin: 5px 8px;
+            }
+
+            .section-title {
+                font-size: 1.8em;
+            }
+
+            .cta-button {
+                display: block;
+                margin: 10px 20px;
+            }
+
+            .cta-button.secondary {
+                margin-left: 20px;
+            }
+
+            .problem-list,
+            .benefits-grid,
+            .trust-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing-table {
+                overflow-x: auto;
+            }
+
+            .pricing-table th,
+            .pricing-table td {
+                padding: 15px;
+                font-size: 0.9em;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.6);
+            animation: fadeIn 0.3s;
+        }
+
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: auto;
+            padding: 0;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 600px;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 10px 50px rgba(0, 0, 0, 0.3);
+            animation: slideUp 0.3s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from { 
+                opacity: 0;
+                transform: translateY(50px); 
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0); 
+            }
+        }
+
+        .modal-header {
+            background: linear-gradient(135deg, var(--primary-orange) 0%, #ff8800 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 20px 20px 0 0;
+            position: relative;
+        }
+
+        .modal-header h2 {
+            margin: 0;
+            font-size: 1.8em;
+            font-weight: 900;
+        }
+
+        .modal-header p {
+            margin: 10px 0 0 0;
+            opacity: 0.95;
+        }
+
+        .close-button {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            color: white;
+            font-size: 2em;
+            font-weight: bold;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 5px 10px;
+            line-height: 1;
+            transition: transform 0.2s;
+        }
+
+        .close-button:hover {
+            transform: scale(1.2);
+        }
+
+        .modal-body {
+            padding: 40px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 700;
+            color: var(--secondary-navy);
+            font-size: 0.95em;
+        }
+
+        .form-group label .required {
+            color: var(--primary-orange);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #E0E0E0;
+            border-radius: 10px;
+            font-size: 1em;
+            font-family: 'Noto Sans KR', sans-serif;
+            transition: all 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-orange);
+            box-shadow: 0 0 0 3px rgba(255, 153, 51, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .submit-button {
+            width: 100%;
+            background: var(--primary-orange);
+            color: white;
+            padding: 18px;
+            font-size: 1.1em;
+            font-weight: 700;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 10px;
+        }
+
+        .submit-button:hover {
+            background: #ff8800;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(255, 153, 51, 0.4);
+        }
+
+        .submit-button:active {
+            transform: translateY(0);
+        }
+
+        .form-notice {
+            background: var(--light-gray);
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 0.9em;
+            color: var(--text-light);
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .success-message {
+            display: none;
+            text-align: center;
+            padding: 60px 40px;
+        }
+
+        .success-message.active {
+            display: block;
+        }
+
+        .success-message .icon {
+            font-size: 5em;
+            margin-bottom: 20px;
+        }
+
+        .success-message h3 {
+            font-size: 1.8em;
+            color: var(--secondary-navy);
+            margin-bottom: 15px;
+        }
+
+        .success-message p {
+            color: var(--text-light);
+            line-height: 1.7;
+            margin-bottom: 30px;
+        }
+
+        @media (max-width: 768px) {
+            .modal-content {
+                width: 95%;
+                margin: 20px;
+            }
+
+            .modal-header,
+            .modal-body {
+                padding: 25px;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="#problem">문제</a></li>
+            <li><a href="#solution">솔루션</a></li>
+            <li><a href="#benefits">혜택</a></li>
+            <li><a href="#trust">신뢰</a></li>
+            <li><a href="#pricing">가격</a></li>
+            <li><a href="#cta">신청</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1 class="fade-in">
+                <span class="highlight">전화 한 통</span>으로<br>
+                당신의 가게 문이 활짝 열립니다
+            </h1>
+            <p class="subtitle fade-in">
+                중장년 고객을 위한 지역 소상공인 전용<br>
+                <strong>'친절 주문 중개소'</strong>
+            </p>
+            <a href="#cta" class="cta-button fade-in">지금 베타 파트너 신청하기</a>
+            <a href="#solution" class="cta-button secondary fade-in">자세히 알아보기</a>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section id="problem">
+        <div class="container">
+            <h2 class="section-title">디지털 격차는 고객 격차가 됩니다</h2>
+            <p class="section-subtitle">이런 고민, 하고 계시지 않으신가요?</p>
+            
+            <div class="problem-list">
+                <div class="problem-item">
+                    <div class="icon">👵</div>
+                    <h3>고민 1</h3>
+                    <p>"우리 가게 단골 고객(중장년/노년층)들이 키오스크나 배달 앱 사용을 너무 어려워해요."</p>
+                </div>
+                <div class="problem-item">
+                    <div class="icon">⏰</div>
+                    <h3>고민 2</h3>
+                    <p>"가게 운영만으로도 바쁜데, 복잡한 온라인 마케팅 채널(스마트 스토어, 라이브 커머스 등)에 뛰어들 여력이 없어요."</p>
+                </div>
+                <div class="problem-item">
+                    <div class="icon">📢</div>
+                    <h3>고민 3</h3>
+                    <p>"우리 상품이 좋은 건 아는데, 디지털에 약한 고객들에게 알릴 수 있는 새로운 소통 창구가 없나요?"</p>
+                </div>
+            </div>
+
+            <div class="blockquote">
+                당신의 훌륭한 상품이 단지 '디지털 문턱' 때문에<br>
+                잠재 고객에게 닿지 못하고 있진 않습니까?
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section id="solution">
+        <div class="container">
+            <h2 class="section-title">'사람의 정'을 담아, 지역 상점과 고객을 1:1로 이어드립니다</h2>
+            <p class="section-subtitle">
+                복잡한 앱 설치나 결제 절차 없이,<br>
+                <strong>'전화 주문'과 '대면 상담'</strong>을 핵심으로 고객과 소상공인 사장님을 중개합니다
+            </p>
+
+            <div class="solution-content">
+                <div class="solution-list">
+                    <div class="solution-item">
+                        <div class="icon">🎯</div>
+                        <div>
+                            <h3>최적의 중개</h3>
+                            <p>디지털에 익숙하지 않은 중장년/노년층 고객에게 친절한 상담사가 직접 상품을 소개하고 주문을 받아, 사장님께 전달합니다.</p>
+                        </div>
+                    </div>
+                    <div class="solution-item">
+                        <div class="icon">🤝</div>
+                        <div>
+                            <h3>유통/소통 전문가 활용</h3>
+                            <p>지역 유통 전문가의 인맥과 노하우를 활용하여, 사장님의 상품이 필요한 고객층에게 정확하게 도달하도록 돕습니다.</p>
+                        </div>
+                    </div>
+                    <div class="solution-item">
+                        <div class="icon">⚡</div>
+                        <div>
+                            <h3>사장님은 '생산'에만 집중</h3>
+                            <p>판매, 상담, 주문 처리 등 복잡한 비대면 프로세스는 저희에게 맡기시고, 오직 최고의 상품을 만드는 데만 집중하세요.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section id="benefits">
+        <div class="container">
+            <h2 class="section-title">복잡한 디지털, 이 3가지 혜택으로 쉽게 해결됩니다</h2>
+            
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="number">01</div>
+                    <div class="icon">📞</div>
+                    <h3>전담 인력의<br>'친절 상담 주문 대행'</h3>
+                    <p>고객은 친절한 상담원과의 전화 한 통으로 편리하게 주문 완료. 사장님은 검증된 주문만 받으면 끝.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="number">02</div>
+                    <div class="icon">📈</div>
+                    <h3>신규 고객층 확대<br>(디지털 취약 계층)</h3>
+                    <p>기존에 디지털 채널을 이용하지 못했던 중장년/노년층 고객을 확실한 신규 팬덤으로 흡수.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="number">03</div>
+                    <div class="icon">🤝</div>
+                    <h3>지역 내 강력한<br>파트너 네트워크</h3>
+                    <p>시장 상인회, 소상공인협회 등 지역 핵심 기관과의 연계를 통해 신뢰도를 높이고, 상품 홍보 채널을 다각화.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Section -->
+    <section id="trust">
+        <div class="container">
+            <h2 class="section-title">지역 사회가 함께 검증하고 키워나갑니다</h2>
+            <p class="section-subtitle">
+                지역 정주형 창직 아이디어를 기반으로,<br>
+                <strong>'함께 성장하는 지역 경제'</strong>를 목표로 합니다
+            </p>
+
+            <div class="trust-grid">
+                <div class="trust-card">
+                    <span class="badge">MVP 계획</span>
+                    <h3>시범 운영을 통한 검증</h3>
+                    <p>현재 충남대학교 내 동아리원들과의 시범 운영을 통해 서비스의 효용성과 운영 프로세스를 검증하고 있습니다. 확보된 사용자 피드백을 통해 고객과 상인 모두에게 최적화된 시스템을 구축 중입니다.</p>
+                </div>
+                <div class="trust-card">
+                    <span class="badge">협력 기관/자원</span>
+                    <h3>지역 사회 협력 네트워크</h3>
+                    <p>대전 지역 시장 상인회, 충남대학교, 대전 소상공인협회 등과 협력 관계를 구축하고 있으며, 지역 사회의 주요 자원을 활용하여 서비스의 안정성과 지속 가능성을 확보했습니다.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing">
+        <div class="container">
+            <h2 class="section-title">초기 베타 파트너 대상, 파격적인 조건으로 참여하세요</h2>
+
+            <div class="pricing-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>구분</th>
+                            <th>일반 수수료 (예정)</th>
+                            <th>베타 파트너 특별 조건</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>중개 수수료</strong></td>
+                            <td>판매액의 15%</td>
+                            <td class="highlight-col">판매액의 5% (최초 3개월 한정)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>디지털 채널 구축 대행</strong></td>
+                            <td>별도 비용 발생</td>
+                            <td class="highlight-col">무료 지원 (상점 상품 목록 및 전화 주문 연결 페이지)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>최소 계약 기간</strong></td>
+                            <td>6개월</td>
+                            <td class="highlight-col">3개월 (부담 없는 경험 기회)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="pricing-alert">
+                🎁 이 기회는 선착순 10개 상점 한정입니다!<br>
+                디지털 소외 고객층을 확실하게 확보할 수 있는 절호의 기회를 놓치지 마세요.
+            </div>
+        </div>
+    </section>
+
+    <!-- Closing CTA Section -->
+    <section id="cta" class="closing">
+        <div class="container">
+            <h2>복잡한 기술 대신, '사람의 정'으로 매출을 높이세요</h2>
+            <p>
+                디지털 전환의 막다른 골목에서 고민하지 마십시오.<br>
+                저희 '휴먼 터치 커머스' 채널이 사장님의 든든한 영업 파트너가 되어,<br>
+                잠재 고객의 마음을 열어드리겠습니다.
+            </p>
+            <a href="#apply" class="cta-button" style="background: var(--primary-orange); margin-bottom: 20px;">
+                선착순 10팀 한정! 지금 바로 베타 파트너 신청하고, 3개월 특별 혜택 받기
+            </a>
+            <br>
+            <a href="#contact" class="cta-button secondary">서비스에 대해 궁금한 점이 있으신가요? 문의하기</a>
+        </div>
+    </section>
+
+    <!-- Application Form Modal -->
+    <div id="applicationModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close-button" onclick="closeModal()">&times;</button>
+                <h2>🎉 베타 파트너 신청하기</h2>
+                <p>선착순 10팀 한정! 특별 혜택을 받으실 수 있습니다</p>
+            </div>
+            <div class="modal-body">
+                <form id="applicationForm">
+                    <div class="form-notice">
+                        💡 <strong>신청 정보는 안전하게 보관됩니다.</strong> 영업일 기준 2일 이내에 담당자가 연락드립니다.
+                    </div>
+
+                    <div class="form-group">
+                        <label>상점명 <span class="required">*</span></label>
+                        <input type="text" name="storeName" placeholder="예: 대전 중앙시장 김밥천국" required>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>대표자명 <span class="required">*</span></label>
+                            <input type="text" name="ownerName" placeholder="홍길동" required>
+                        </div>
+                        <div class="form-group">
+                            <label>연락처 <span class="required">*</span></label>
+                            <input type="tel" name="phone" placeholder="010-1234-5678" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>이메일 <span class="required">*</span></label>
+                        <input type="email" name="email" placeholder="example@email.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>상점 주소 <span class="required">*</span></label>
+                        <input type="text" name="address" placeholder="대전광역시 중구 은행동 123-45" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>업종/상품 카테고리 <span class="required">*</span></label>
+                        <select name="category" required>
+                            <option value="">선택해주세요</option>
+                            <option value="식품">식품 (반찬, 먹거리 등)</option>
+                            <option value="음식점">음식점 (한식, 중식, 분식 등)</option>
+                            <option value="의류/잡화">의류/잡화</option>
+                            <option value="생활용품">생활용품</option>
+                            <option value="농수산물">농수산물</option>
+                            <option value="기타">기타</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>월 평균 매출 규모</label>
+                        <select name="revenue">
+                            <option value="">선택해주세요 (선택사항)</option>
+                            <option value="500만원 미만">500만원 미만</option>
+                            <option value="500만원~1000만원">500만원 ~ 1,000만원</option>
+                            <option value="1000만원~3000만원">1,000만원 ~ 3,000만원</option>
+                            <option value="3000만원 이상">3,000만원 이상</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>주요 고객층</label>
+                        <select name="customerBase">
+                            <option value="">선택해주세요 (선택사항)</option>
+                            <option value="20~30대">20~30대</option>
+                            <option value="40~50대">40~50대</option>
+                            <option value="60대 이상">60대 이상</option>
+                            <option value="전 연령">전 연령</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>서비스에 기대하는 점 또는 문의사항</label>
+                        <textarea name="message" placeholder="자유롭게 작성해주세요. (선택사항)"></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-button">
+                        🚀 베타 파트너 신청 완료하기
+                    </button>
+                </form>
+
+                <div class="success-message" id="successMessage">
+                    <div class="icon">✅</div>
+                    <h3>신청이 완료되었습니다!</h3>
+                    <p>
+                        소중한 신청 감사합니다.<br>
+                        영업일 기준 2일 이내에 담당자가 연락드리겠습니다.<br>
+                        <br>
+                        <strong>휴먼 터치 커머스</strong>와 함께<br>
+                        새로운 고객층을 만나보세요! 🎉
+                    </p>
+                    <button class="submit-button" onclick="closeModal()">확인</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>© 2025 휴먼 터치 커머스. All rights reserved.</p>
+            <p>충남대학교 사회학과 지역 정주형 창직 프로젝트</p>
+        </div>
+    </footer>
+
+    <script>
+        // Modal Functions
+        function openModal() {
+            document.getElementById('applicationModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('applicationModal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+            // Reset form and success message
+            document.getElementById('applicationForm').style.display = 'block';
+            document.getElementById('successMessage').classList.remove('active');
+            document.getElementById('applicationForm').reset();
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('applicationModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+
+        // Form Submission
+        document.getElementById('applicationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Collect form data
+            const formData = new FormData(this);
+            const data = {};
+            formData.forEach((value, key) => {
+                data[key] = value;
+            });
+
+            // Log to console (In production, send to backend)
+            console.log('베타 파트너 신청 데이터:', data);
+
+            // Show success message
+            document.getElementById('applicationForm').style.display = 'none';
+            document.getElementById('successMessage').classList.add('active');
+
+            // In production, you would send this to your backend:
+            /*
+            fetch('/api/applications', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(result => {
+                // Handle success
+                document.getElementById('applicationForm').style.display = 'none';
+                document.getElementById('successMessage').classList.add('active');
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('신청 중 오류가 발생했습니다. 다시 시도해주세요.');
+            });
+            */
+        });
+
+        // Update CTA buttons to open modal
+        document.querySelectorAll('a[href="#apply"], a[href="#cta"], a[href="#contact"]').forEach(link => {
+            if (link.classList.contains('cta-button')) {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    openModal();
+                });
+            }
+        });
+
+        // Smooth scroll for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                // Don't prevent default for modal triggers
+                if (this.getAttribute('href') === '#apply' || 
+                    this.getAttribute('href') === '#cta' || 
+                    this.getAttribute('href') === '#contact') {
+                    return;
+                }
+                
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.problem-item, .solution-item, .benefit-card, .trust-card').forEach(el => {
+            observer.observe(el);
+        });
+
+        // CTA button tracking (placeholder for analytics)
+        document.querySelectorAll('.cta-button').forEach(button => {
+            button.addEventListener('click', function(e) {
+                console.log('CTA clicked:', this.textContent);
+                // Here you can add actual analytics tracking
+            });
+        });
+    </script>
+</body>
+</html>
